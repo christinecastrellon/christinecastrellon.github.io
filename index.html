@@ -262,5 +262,313 @@
       });
     });
   </script>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Gut–Brain Edit</title>
+
+  <style>
+    :root {
+      --cream: #fffaf2;
+      --sage: #a8b69a;
+      --dark-sage: #5f725a;
+      --peach: #e8ae8d;
+      --brown: #4a3d35;
+      --card: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+    }
+
+    header {
+      text-align: center;
+      padding: 55px 20px 35px;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin: 12px 0;
+    }
+
+    main {
+      width: min(1000px, 90%);
+      margin: auto;
+      padding-bottom: 60px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(74, 61, 53, 0.08);
+    }
+
+    h2 {
+      font-family: Georgia, serif;
+      margin-top: 0;
+    }
+
+    .quote {
+      background: var(--sage);
+      color: #fff;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+
+    button {
+      border: none;
+      border-radius: 30px;
+      padding: 11px 16px;
+      margin: 5px 3px;
+      cursor: pointer;
+      background: #edf0e8;
+      color: var(--brown);
+      font-size: 0.95rem;
+    }
+
+    button:hover,
+    button.selected {
+      background: var(--peach);
+      color: white;
+    }
+
+    .progress-background {
+      background: #eee7df;
+      border-radius: 30px;
+      overflow: hidden;
+      height: 14px;
+      margin-top: 12px;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+      background: var(--dark-sage);
+      transition: width 0.3s;
+    }
+
+    .vlog-card {
+      background: #f3e4d7;
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 12px;
+    }
+
+    .vlog-card span {
+      font-size: 1.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #77685e;
+    }
+
+    footer {
+    text-align: center;
+    padding: 25px;
+    color: #77685e;
+}
+
+/* ADD THIS HERE */
+.site-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 50px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
+}
+
+.footer-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 15%;
+}
+
+
+.footer-text {
+    font-size: 14px;
+}
+
+.footer-text p {
+    margin: 3px 0;
+}
+
+</style>
+  </style>
+</head>
+
+<body>
+  <header>
+    <p>WELCOME TO</p>
+    <h1>The Gut–Brain Edit</h1>
+    <p>Your daily reset for stress, sleep, mood, and small habits.</p>
+  </header>
+
+  <main>
+    <section class="card quote">
+      <p id="dailyQuote">Loading today’s affirmation...</p>
+    </section>
+
+    <br />
+
+    <section class="grid">
+      <div class="card">
+        <h2>How are you feeling today?</h2>
+        <p>Tap one mood to check in.</p>
+
+        <button class="mood">😊 Good</button>
+        <button class="mood">😌 Calm</button>
+        <button class="mood">😵 Stressed</button>
+        <button class="mood">😔 Low energy</button>
+
+        <p id="checkInMessage"></p>
+      </div>
+
+      <div class="card">
+        <h2>Your reset points</h2>
+        <p><strong id="points">0</strong> / 100 points</p>
+
+        <div class="progress-background">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <p id="progressMessage">Start with one small act of care.</p>
+
+        <button onclick="addPoints(10)">✓ Daily check-in</button>
+        <button onclick="addPoints(5)">💧 Drink water</button>
+        <button onclick="addPoints(5)">🚶 Take a walk</button>
+      </div>
+    </section>
+
+    <br />
+
+    <section class="card">
+      <h2>The gut–brain connection</h2>
+      <div class="grid">
+        <div>
+          <h3>😴 Sleep</h3>
+          <p>Sleep can affect both stress levels and digestion.</p>
+        </div>
+        <div>
+          <h3>🧠 Stress</h3>
+          <p>Your brain and digestive system communicate constantly.</p>
+        </div>
+        <div>
+          <h3>🍓 Nourishment</h3>
+          <p>Regular meals can support stable energy and focus.</p>
+        </div>
+      </div>
+    </section>
+
+    <br />
+
+    <section class="card">
+      <h2>Reset With Me</h2>
+
+      <div class="vlog-card">
+        <span>☀️</span>
+        <strong> My 10-minute morning reset</strong>
+        <p>Water, sunlight, a protein-forward breakfast, and no phone for ten minutes.</p>
+      </div>
+
+      <div class="vlog-card">
+        <span>📚</span>
+        <strong> A study break that actually helps</strong>
+        <p>Stand up, breathe, get a snack, and take a short walk before restarting.</p>
+      </div>
+
+      <div class="vlog-card">
+        <span>🛒</span>
+        <strong> Sunday grocery reset</strong>
+        <p>Simple foods that make regular meals easier during a busy week.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Small resets count. You do not have to earn rest.
+  </footer>
+
+  <script>
+    const quotes = [
+      "A small reset is still a reset.",
+      "You do not have to earn rest.",
+      "Consistency can be gentle.",
+      "Take care of the person who is trying so hard: you.",
+      "One nourishing choice can change the direction of your day."
+    ];
+
+    const dayOfYear = Math.floor(
+      (new Date() - new Date(new Date().getFullYear(), 0, 0)) / 86400000
+    );
+
+    document.getElementById("dailyQuote").textContent =
+      "“" + quotes[dayOfYear % quotes.length] + "”";
+
+    let points = 0;
+
+    function addPoints(amount) {
+      points = Math.min(points + amount, 100);
+
+      document.getElementById("points").textContent = points;
+      document.getElementById("progressBar").style.width = points + "%";
+
+      if (points >= 100) {
+        document.getElementById("progressMessage").textContent =
+          "You built a week of small acts of care ✨";
+      } else {
+        document.getElementById("progressMessage").textContent =
+          "Keep going—small habits add up.";
+      }
+    }
+
+    document.querySelectorAll(".mood").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".mood").forEach(item =>
+          item.classList.remove("selected")
+        );
+
+        button.classList.add("selected");
+        document.getElementById("checkInMessage").textContent =
+          "Thank you for checking in with yourself today.";
+        addPoints(10);
+      });
+    });
+  </script>
+  <footer class="site-footer">
+    <img src="Screenshot 2026-10-04 at 8.50.44 PM.png" alt="Photo of Christine Castrellon" class="footer-photo">
+
+    <div class="footer-text">
+        <p>Created by <strong>Christine Castrellon</strong></p>
+        <p>University of Miami</p>
+    </div>
+</footer>
 </body>
 </html>
